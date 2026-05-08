@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniket | VLSI & ASIC Design</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --text-main: #c9d1d9;
+            --accent: #58a6ff;
+            --card-bg: rgba(22, 27, 34, 0.7);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Fira Code', monospace;
+            overflow-x: hidden;
+        }
+
+        /* The floating particle background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            top: 0;
+            left: 0;
+        }
+
+        /* Main content container */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        header {
+            margin-bottom: 4rem;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 span {
+            color: var(--accent);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #8b949e;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Project Cards using Glassmorphism */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+
+        /* Skills Tags */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <header>
+            <h1>Aniket<span>_</span></h1>
+            <div class="subtitle">Electronics Engineering Student @ APCOER | Specializing in VLSI & Digital ASIC Design</div>
+        </header>
+
+        <section id="projects">
+            <h2>> Architectures_</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <h3>Sky130 8-Bit ALU Core</h3>
+                    <p>End-to-end RTL-to-GDSII physical design implementation of a purely combinational 8-bit ALU with a dual-read Register File.</p>
+                    <p style="font-size: 0.85rem; color: #8b949e;">Tech: OpenLane, SkyWater 130nm, Synopsys Tools</p>
+                </div>
+
+                <div class="card">
+                    <h3>8-Bit Modified Harvard SoC</h3>
+                    <p>Custom processor architecture featuring separated instruction and data memory, program counter, and a custom 16-bit instruction decoder.</p>
+                    <p style="font-size: 0.85rem; color: #8b949e;">Tech: Verilog, Icarus Verilog, GTKWave</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>> Tech_Stack_</h2>
+            <div class="skills-container">
+                <span class="skill-tag">Verilog HDL</span>
+                <span class="skill-tag">RTL-to-GDSII</span>
+                <span class="skill-tag">OpenLane Flow</span>
+                <span class="skill-tag">Synopsys Design Compiler</span>
+                <span class="skill-tag">IC Compiler II</span>
+                <span class="skill-tag">Digital Logic Synthesis</span>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#58a6ff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#58a6ff",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1.5,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 200, "line_linked": { "opacity": 0.6 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
