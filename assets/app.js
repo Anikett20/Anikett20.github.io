@@ -124,7 +124,7 @@
       <div class="dialog-stats">${project.metrics.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
       ${key === 'openlane' ? '<h3>Project results (from resume)</h3>' : ''}<p class="results-note">${project.results}</p>
       <h3>Tools used</h3><p>${project.tools}</p>
-      <a class="button button-outline" href="assets/Aniket_Kulkarni_Resume.pdf" target="_blank" rel="noopener noreferrer">View full resume<svg class="icon"><use href="#i-external"/></svg></a></div>`;
+      </div>`;
     dialog.showModal();
     dialog.scrollTop = 0;
     dialog.querySelector('.dialog-close').focus();

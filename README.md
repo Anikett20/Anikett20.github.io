@@ -1,13 +1,13 @@
 # Aniket Kulkarni — VLSI portfolio
 
-A responsive, static personal portfolio for VLSI Design & Technology, built with HTML, CSS, and vanilla JavaScript. The dark vCard layout has a fixed desktop sidebar, a mobile menu, original circuit illustrations, five navigable sections, and project details.
+A responsive, static personal portfolio for VLSI Design & Technology, built with HTML, CSS, and vanilla JavaScript. The warm charcoal, ivory, and muted copper palette complements a dark vCard layout with a fixed desktop sidebar, a mobile menu, original circuit illustrations, five navigable sections, and project details.
 
 ## Files
 
 - `index.html` — profile, experience, education, training, project summaries, and contact links.
 - `assets/style.css` — desktop/mobile layout, visual styling, and reduced-motion support.
 - `assets/app.js` — hash navigation, project filters and dialogs, mobile navigation, motion control, and email copying.
-- `assets/Aniket_Kulkarni_Resume.pdf` — the supplied resume, copied unchanged. Both view and download links use this file.
+- `assets/Aniket_Kulkarni_Resume.pdf` — the supplied resume re-typeset with larger text and fuller-page spacing, preserving its content and current portfolio link. The Resume section contains the single Download resume (PDF) action.
 - `assets/circuit-hero.svg`, `assets/project-*.svg`, and `assets/favicon.svg` — original decorative and schematic artwork. Project illustrations are explanatory graphics, not physical-design screenshots.
 
 ## Preview locally
@@ -34,7 +34,7 @@ Navigation supports `#home`, `#about`, `#resume`, `#portfolio`, and `#contact`. 
 
 ## Accessibility
 
-The site includes visible keyboard focus, a skip link, meaningful navigation labels, native modal dialogs with Escape-to-close and focus restoration, a mobile-menu focus loop, an announcement after project filtering, a pause-motion control, and support for the system's reduced-motion preference. With JavaScript disabled, all main sections and PDF links remain available.
+The site includes visible keyboard focus, a skip link, meaningful navigation labels, native modal dialogs with Escape-to-close and focus restoration, a mobile-menu focus loop, an announcement after project filtering, a pause-motion control, and support for the system's reduced-motion preference. With JavaScript disabled, all main sections and the resume download remain available.
 
 ## Content source
 
