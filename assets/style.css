@@ -7,3 +7,6 @@
 @media(max-width:390px){.hero-top .hero-location{display:none}.hero-content{padding-top:53px;padding-bottom:47px;min-height:500px}.hero-content h1{font-size:70px}.hero-content .eyebrow{font-size:7px}.hero-role{font-size:17px}.hero-actions{gap:19px;flex-wrap:wrap}.hero-actions .button{padding:11px 14px;font-size:10px;gap:11px}.hero-actions .text-link{font-size:9px}.hero-bottom{flex-direction:column;align-items:flex-start;gap:12px}.hero-disciplines{font-size:6px;gap:11px}.mobile-header{padding:0 22px}.mobile-brand span{font-size:8px;letter-spacing:1px}.page-heading h2{font-size:39px}.page-heading .eyebrow{font-size:6px}.contact-intro h3{font-size:36px}.email-block>a{font-size:16px}.project-tags{font-size:7px}.project-tags>span{padding:0 8px;margin:0 8px}.project-note p span{max-width:206px}.dialog-stats strong{font-size:22px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.signal{display:none}}
 
+
+/* Verified project evidence: legible waveform/table image inside the modal. */
+.evidence-figure{margin:18px 0 24px;border:1px solid var(--line);background:#191a1b;overflow:hidden}.evidence-figure img{display:block;width:100%;height:auto}.evidence-figure figcaption{padding:10px 14px;font:10px/1.7 var(--mono);color:var(--dim)}
