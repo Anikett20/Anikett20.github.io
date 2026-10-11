@@ -105,10 +105,11 @@
     synopsys: {
       title: '4-bit ALU · Synopsys Flow', subtitle: 'Synopsys RTL-to-GDSII flow', image: 'assets/project-synopsys.svg',
       description: 'I designed a modular 4-bit ALU in Verilog and worked through functional verification, synthesis, and physical implementation using the Synopsys tool flow.',
-      steps: ['Developed the modular ALU in Verilog.', 'Verified opcode-level functionality using VCS and Verdi.', 'Performed synthesis using Design Vision.', 'Completed physical design from floorplanning through routing using IC Compiler II.'],
-      metrics: [['213', 'Leaf cells'], ['375.12 µm²', 'Combinational area'], ['0', 'Reported DRC violations']],
-      results: 'These final-design figures are recorded in my resume. The area shown is combinational area.',
-      evidence: 'Verification waveforms, synthesis/timing reports, routing screenshots, and DRC reports can be added here once reviewed. The current artwork is illustrative, not a result screenshot.',
+      steps: ['Implemented eight clocked ALU operations in Verilog, with result, carry/borrow, and zero outputs.', 'Created a simulation testbench and captured a VCS VCD trace with nine stimulus scenarios; the right-shift opcode is not exercised in that trace.', 'Generated a standard-cell-mapped netlist using Synopsys Design Compiler.', 'Ran IC Compiler II floorplanning, power routing, signal routing, and design checks; further DRC cleanup is required.'],
+      metrics: [['213', 'ICC2 leaf cells'], ['375.12 µm²', 'Combinational area'], ['0', 'Open nets in routing check']],
+      results: 'ICC2 QoR reports 213 leaf cells, 375.12 µm² combinational area, and 417.81 µm² netlist cell area. The routing check reports zero open nets but 178 DRC violations, including 112 shorts; it is not DRC-clean. The QoR run also warns that interconnect delays could not be extracted, so this is not a sign-off timing result.',
+      evidence: 'The trace below is reconstructed from the provided VCS-generated VCD, sampled after rising clock edges. It shows nine directed stimulus scenarios, rather than exhaustive or assertion-based verification. The banner artwork above remains illustrative, not an ICC2 screenshot.',
+      evidenceImage: 'assets/alu_4bit_vcd_trace.svg',
       tools: 'Verilog · VCS · Verdi · Design Vision · IC Compiler II'
     }
   };
@@ -126,6 +127,7 @@
       <div class="dialog-stats">${project.metrics.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
       ${key === 'openlane' ? '<h3>Project results (from resume)</h3>' : ''}<p class="results-note">${project.results}</p>
       <h3>Evidence &amp; design artifacts</h3><p class="results-note">${project.evidence}</p>
+      ${project.evidenceImage ? `<figure class="evidence-figure"><img src="${project.evidenceImage}" loading="lazy" alt="VCS VCD capture: sampled ALU inputs, opcode, result, carry, and zero for nine directed test cases"><figcaption>Visualization of the supplied VCS VCD trace, not a screenshot of the EDA application.</figcaption></figure>` : ''}
       <h3>Tools used</h3><p>${project.tools}</p>
       </div>`;
     dialog.showModal();
