@@ -94,19 +94,21 @@
 
   const projects = {
     openlane: {
-      title: '8-Bit Digital Design', subtitle: 'RTL to GDSII · OpenLane / SKY130', image: 'assets/project-openlane.svg',
+      title: '8-bit RTL-to-GDSII Design', subtitle: 'RTL to GDSII · OpenLane / SKY130', image: 'assets/project-openlane.svg',
       description: 'I implemented an 8-operation ALU, an 8 × 8-bit synchronous register file, and a control unit supporting 12 instructions in Verilog, then took the design through the OpenLane RTL-to-GDSII flow on SKY130.',
       steps: ['Developed the digital blocks in Verilog HDL.', 'Verified RTL behavior using Icarus Verilog testbenches.', 'Ran the OpenLane implementation flow on the SKY130 130 nm process.', 'Inspected the final GDSII layout using KLayout.'],
       metrics: [['8', 'ALU operations'], ['8 × 8-bit', 'Synchronous register file'], ['12', 'Control-unit instructions']],
       results: 'My resume records completion of 42/42 flow steps, with no reported DRC or setup/hold violations.',
+      evidence: 'Project RTL, simulation waveforms, final layout screenshots, and implementation reports can be added here once reviewed. The current artwork is illustrative, not a result screenshot.',
       tools: 'Verilog · Icarus Verilog · OpenLane · SKY130 · KLayout'
     },
     synopsys: {
-      title: '4-Bit ALU', subtitle: 'Synopsys RTL-to-GDSII flow', image: 'assets/project-synopsys.svg',
+      title: '4-bit ALU · Synopsys Flow', subtitle: 'Synopsys RTL-to-GDSII flow', image: 'assets/project-synopsys.svg',
       description: 'I designed a modular 4-bit ALU in Verilog and worked through functional verification, synthesis, and physical implementation using the Synopsys tool flow.',
       steps: ['Developed the modular ALU in Verilog.', 'Verified opcode-level functionality using VCS and Verdi.', 'Performed synthesis using Design Vision.', 'Completed physical design from floorplanning through routing using IC Compiler II.'],
       metrics: [['213', 'Leaf cells'], ['375.12 µm²', 'Combinational area'], ['0', 'Reported DRC violations']],
       results: 'These final-design figures are recorded in my resume. The area shown is combinational area.',
+      evidence: 'Verification waveforms, synthesis/timing reports, routing screenshots, and DRC reports can be added here once reviewed. The current artwork is illustrative, not a result screenshot.',
       tools: 'Verilog · VCS · Verdi · Design Vision · IC Compiler II'
     }
   };
@@ -123,6 +125,7 @@
       <p class="results-label">${key === 'synopsys' ? 'PROJECT RESULTS (FROM RESUME)' : 'DESIGN AT A GLANCE'}</p>
       <div class="dialog-stats">${project.metrics.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
       ${key === 'openlane' ? '<h3>Project results (from resume)</h3>' : ''}<p class="results-note">${project.results}</p>
+      <h3>Evidence &amp; design artifacts</h3><p class="results-note">${project.evidence}</p>
       <h3>Tools used</h3><p>${project.tools}</p>
       </div>`;
     dialog.showModal();
