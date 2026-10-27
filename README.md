@@ -7,7 +7,9 @@ A responsive, static personal portfolio for VLSI Design & Technology, built with
 - `index.html` — profile, experience, education, training, project summaries, and contact links.
 - `assets/style.css` — desktop/mobile layout, visual styling, and reduced-motion support.
 - `assets/app.js` — hash navigation, project filters and dialogs, mobile navigation, motion control, and email copying.
-- `assets/Aniket_Kulkarni_Resume.pdf` — the supplied resume re-typeset with larger text and fuller-page spacing, preserving its content and current portfolio link. The Resume section contains the single Download resume (PDF) action.
+- `assets/Aniket_Kulkarni_Resume.pdf` — the updated one-page resume, including the RV32IM + Zicsr SoC, SemiX AI hardware workshop, and 4th Annual SemiX Summit. The Resume section contains one Download resume (PDF) action.
+- `assets/updates.css` — styles for the featured SoC card and workshop source links.
+- `assets/project-riscv-layout.jpg` — actual phase-5 GDSII layout shown in KLayout, from the author's project documentation.
 - `assets/circuit-hero.svg`, `assets/project-*.svg`, and `assets/favicon.svg` — original decorative and schematic artwork. Project illustrations are explanatory graphics, not physical-design screenshots.
 
 ## Preview locally
@@ -28,7 +30,7 @@ The Google Fonts stylesheet is optional: the page has local serif, sans-serif, a
 
 ## Update content
 
-Edit the visible profile and resume sections in `index.html`. The complete project-dialog content is in the `projects` object in `assets/app.js`; update its corresponding project summary in `index.html` at the same time. Project results are explicitly attributed to the resume. Replace the PDF at its existing path to update the downloadable document, and reconcile the page text with the new version.
+Edit the visible profile and resume sections in `index.html`. The complete project-dialog content is in the `projects` object in `assets/app.js`; update its corresponding project summary in `index.html` at the same time. Replace the PDF at its existing path to update the downloadable document, and reconcile the page text with the new version. Keep the project count and filter status consistent with the cards.
 
 Navigation supports `#home`, `#about`, `#resume`, `#portfolio`, and `#contact`. Earlier anchors such as `#projects`, `#experience`, `#education`, and `#skills` resolve to the relevant section. Browser Back/Forward and direct section URLs work without server rewrites.
 
@@ -38,4 +40,12 @@ The site includes visible keyboard focus, a skip link, meaningful navigation lab
 
 ## Content source
 
-Biographical, educational, internship, workshop, and project information is based on Aniket Kulkarni's supplied resume. No source repository, technical report, portrait, or fabrication claim has been invented. The visual direction is an original implementation inspired by the user's requested dark vCard reference.
+Biographical, educational, internship, and earlier-project information is based on Aniket Kulkarni's supplied resume and public LinkedIn profile. The October 2026 additions use these author-supplied posts, all published on 26 October 2026:
+
+- [RV32IM + Zicsr microcontroller SoC](https://www.linkedin.com/posts/aniket-kulkarni-2352a0322_rv32im-zicsr-microcontroller-soc-report-activity-7520454299001188352-KaMY)
+- [SemiX AI hardware workshop](https://www.linkedin.com/posts/aniket-kulkarni-2352a0322_vlsi-systolicarray-synopsys-activity-7520472122079735808-SAjJ)
+- [4th Annual SemiX Summit, 14–17 October 2026](https://www.linkedin.com/posts/aniket-kulkarni-2352a0322_semix-iitbombay-vlsi-activity-7520465655326846977-D3-4)
+
+The SoC figures were cross-checked against the author's phase-5 OpenLane metrics, post-route OpenSTA power/timing summaries, DRC/LVS reports, and engineering report. Power values are estimates. The slow-corner setup slack is −1.14 ns at the 20 ns target; the site does not claim timing closure at 50 MHz across all corners. DRC/LVS-clean describes those reported checks and does not imply fabrication or complete manufacturing signoff. The AI workshop was a guided walkthrough using pre-built reference designs.
+
+The visual direction preserves the original dark vCard implementation. Illustrations for the earlier projects remain explanatory graphics; the SoC image is an actual layout capture.

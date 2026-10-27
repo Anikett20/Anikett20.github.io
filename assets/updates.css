@@ -1,0 +1,15 @@
+/* October 2026 content additions, using the portfolio's existing components. */
+.project-card-featured{grid-column:1/-1}
+.project-card-featured .project-open{display:grid;grid-template-columns:1.05fr 1fr;gap:30px;align-items:center}
+.project-card-featured .project-title-row{margin-top:0}
+.project-layout{background:#191918}
+.project-layout img{object-fit:cover;object-position:center;opacity:.8}
+.project-layout:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#111d 0,transparent 26%,transparent 72%,#111e 100%);pointer-events:none}
+.project-layout .project-index,.project-layout .project-image-caption,.project-layout .project-view{z-index:1;color:#fff}
+.learning-list .text-link{margin-top:10px;font-size:11px}
+.learning-list .text-link .icon{width:15px;height:15px}
+.dialog-banner-layout{height:340px;background:#191918}
+.dialog-banner-layout img{object-fit:contain;opacity:1}
+.dialog-banner-layout>span{background:#191918de;padding:5px 8px;color:#f1ece3}
+@media(max-width:900px){.project-card-featured .project-open{grid-template-columns:1fr;gap:0}.project-card-featured .project-title-row{margin-top:23px}.dialog-banner-layout{height:260px}}
+@media(max-width:700px){.learning-list .text-link{font-size:10px}.dialog-banner-layout{height:210px}}

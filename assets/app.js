@@ -93,21 +93,32 @@
   }));
 
   const projects = {
+    riscv: {
+      title: '32-Bit RISC-V Microcontroller SoC', subtitle: 'RV32IM + Zicsr · OpenLane 1.1.1 / SKY130 HD · October 2026', image: 'assets/project-riscv-layout.jpg',
+      imageCaption: 'ACTUAL GDSII LAYOUT IN KLAYOUT',
+      description: 'I developed rv32im_soc in Verilog across five architectural phases: a single-cycle RV32I core, a five-stage pipeline, RV32M arithmetic, an interrupt-driven SoC, and a final design with synchronous WFI sleep control and SPI. The final CPU integrates hazard/forwarding logic, a 32-cycle iterative multiply/divide unit, machine-mode CSRs and traps, UART, GPIO, timer, and a four-mode SPI master with TX/RX FIFOs.',
+      steps: ['Built and compared five architecture and implementation phases using OpenLane and the sky130_fd_sc_hd library.', 'Replaced a combinational gated-clock approach with synchronous core enables and a two-cycle writeback drain before WFI sleep.', 'Verified timer-interrupt wakeup, trap handling, and SPI loopback through Icarus Verilog testbenches and waveform analysis.', 'Completed synthesis, floorplanning, placement, CTS, routing, RC extraction, and DRC/LVS checks on a 1000 × 1000 µm die.', 'Compared phase-4 and phase-5 OpenSTA estimates: typical-corner switching power fell from 9.65 to 6.93 mW (28.2%) after sleep-control and physical-design changes.'],
+      metrics: [['21,584', 'Routed standard cells'], ['1 mm²', 'Die area'], ['28.2%', 'Lower estimated switching power']],
+      results: 'Phase-5 reports record zero Magic/KLayout DRC violations and zero Netgen LVS errors. Estimated typical-corner total power is about 18.23 mW at a 20 ns clock constraint. Typical setup slack is +9.63 ns; the slow corner retains −1.14 ns setup slack at that target. The results support a DRC/LVS-clean layout, with further timing work needed for 50 MHz across all corners.',
+      tools: 'Verilog · Icarus Verilog · OpenLane · Yosys · OpenROAD · OpenSTA · SKY130 · Magic · Netgen · KLayout',
+      source: 'https://www.linkedin.com/posts/aniket-kulkarni-2352a0322_rv32im-zicsr-microcontroller-soc-report-activity-7520454299001188352-KaMY',
+      sourceLabel: 'Read project post & engineering report'
+    },
     openlane: {
-      title: '8-Bit Digital Design', subtitle: 'RTL to GDSII · OpenLane / SKY130', image: 'assets/project-openlane.svg',
+      title: '8-Bit Digital Design', subtitle: 'RTL to GDSII · OpenLane / SKY130 · April 2026', image: 'assets/project-openlane.svg',
       description: 'I implemented an 8-operation ALU, an 8 × 8-bit synchronous register file, and a control unit supporting 12 instructions in Verilog, then took the design through the OpenLane RTL-to-GDSII flow on SKY130.',
       steps: ['Developed the digital blocks in Verilog HDL.', 'Verified RTL behavior using Icarus Verilog testbenches.', 'Ran the OpenLane implementation flow on the SKY130 130 nm process.', 'Inspected the final GDSII layout using KLayout.'],
       metrics: [['8', 'ALU operations'], ['8 × 8-bit', 'Synchronous register file'], ['12', 'Control-unit instructions']],
-      results: 'My resume records completion of 42/42 flow steps, with no reported DRC or setup/hold violations.',
+      results: 'This project connected RTL design and testbench simulation with an OpenLane physical implementation and GDSII inspection in KLayout.',
       tools: 'Verilog · Icarus Verilog · OpenLane · SKY130 · KLayout'
     },
     synopsys: {
-      title: '4-Bit ALU', subtitle: 'Synopsys RTL-to-GDSII flow', image: 'assets/project-synopsys.svg',
+      title: '4-Bit ALU', subtitle: 'Synopsys RTL-to-GDSII flow · February 2026', image: 'assets/project-synopsys.svg',
       description: 'I designed a modular 4-bit ALU in Verilog and worked through functional verification, synthesis, and physical implementation using the Synopsys tool flow.',
       steps: ['Developed the modular ALU in Verilog.', 'Verified opcode-level functionality using VCS and Verdi.', 'Performed synthesis using Design Vision.', 'Completed physical design from floorplanning through routing using IC Compiler II.'],
-      metrics: [['213', 'Leaf cells'], ['375.12 µm²', 'Combinational area'], ['0', 'Reported DRC violations']],
-      results: 'These final-design figures are recorded in my resume. The area shown is combinational area.',
-      tools: 'Verilog · VCS · Verdi · Design Vision · IC Compiler II'
+      metrics: [['4-bit', 'ALU datapath'], ['VCS / Verdi', 'Functional verification'], ['ICC2', 'Physical implementation']],
+      results: 'The project covered opcode-level functional checks, logic synthesis, and physical implementation from floorplanning through routing.',
+      tools: 'Verilog · VCS · Verdi · Design Compiler / Design Vision · IC Compiler II'
     }
   };
 
@@ -117,13 +128,14 @@
     dialogTrigger = trigger;
     // All content is local, authored portfolio data; no external HTML is inserted.
     dialog.querySelector('.dialog-content').innerHTML = `
-      <div class="dialog-banner"><img src="${project.image}" alt=""><span>ORIGINAL SCHEMATIC ILLUSTRATION</span></div>
+      <div class="dialog-banner ${key === 'riscv' ? 'dialog-banner-layout' : ''}"><img src="${project.image}" alt="${key === 'riscv' ? 'Routed rv32im_soc GDSII layout in KLayout' : ''}"><span>${project.imageCaption || 'ORIGINAL SCHEMATIC ILLUSTRATION'}</span></div>
       <div class="dialog-body"><h2 id="project-dialog-title">${project.title}</h2><p class="dialog-subtitle">${project.subtitle}</p>
       <p>${project.description}</p><h3>The process</h3><ul>${project.steps.map(step => `<li>${step}</li>`).join('')}</ul>
-      <p class="results-label">${key === 'synopsys' ? 'PROJECT RESULTS (FROM RESUME)' : 'DESIGN AT A GLANCE'}</p>
+      <p class="results-label">DESIGN AT A GLANCE</p>
       <div class="dialog-stats">${project.metrics.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
-      ${key === 'openlane' ? '<h3>Project results (from resume)</h3>' : ''}<p class="results-note">${project.results}</p>
+      <h3>Implementation notes</h3><p class="results-note">${project.results}</p>
       <h3>Tools used</h3><p>${project.tools}</p>
+      ${project.source ? `<a class="text-link accent-link" href="${project.source}" target="_blank" rel="noopener noreferrer">${project.sourceLabel}<svg class="icon"><use href="#i-external"/></svg></a>` : ''}
       </div>`;
     dialog.showModal();
     dialog.scrollTop = 0;
