@@ -7,8 +7,8 @@ A responsive, static personal portfolio for VLSI Design & Technology, built with
 - `index.html` — profile, experience, education, training, project summaries, and contact links.
 - `assets/style.css` — desktop/mobile layout, visual styling, and reduced-motion support.
 - `assets/app.js` — hash navigation, project filters and dialogs, mobile navigation, motion control, and email copying.
-- `assets/Aniket_Kulkarni_Resume.pdf` — the updated one-page resume, including the RV32IM + Zicsr SoC, SemiX AI hardware workshop, and 4th Annual SemiX Summit. The Resume section contains one Download resume (PDF) action.
-- `assets/updates.css` — styles for the featured SoC card and workshop source links.
+- `assets/Aniket_Kulkarni_Resume.pdf` — the updated one-page resume, including seven documented Verilog projects, the SemiX AI hardware workshop, and 4th Annual SemiX Summit. The Resume section contains one Download resume (PDF) action.
+- `assets/updates.css` — styles for the featured SoC card, project links, and workshop source links.
 - `assets/project-riscv-layout.jpg` — actual phase-5 GDSII layout shown in KLayout, from the author's project documentation.
 - `assets/circuit-hero.svg`, `assets/project-*.svg`, and `assets/favicon.svg` — original decorative and schematic artwork. Project illustrations are explanatory graphics, not physical-design screenshots.
 
@@ -46,6 +46,8 @@ Biographical, educational, internship, and earlier-project information is based 
 - [SemiX AI hardware workshop](https://www.linkedin.com/posts/aniket-kulkarni-2352a0322_vlsi-systolicarray-synopsys-activity-7520472122079735808-SAjJ)
 - [4th Annual SemiX Summit, 14–17 October 2026](https://www.linkedin.com/posts/aniket-kulkarni-2352a0322_semix-iitbombay-vlsi-activity-7520465655326846977-D3-4)
 
-The SoC figures were cross-checked against the author's phase-5 OpenLane metrics, post-route OpenSTA power/timing summaries, DRC/LVS reports, and engineering report. Power values are estimates. The slow-corner setup slack is −1.14 ns at the 20 ns target; the site does not claim timing closure at 50 MHz across all corners. DRC/LVS-clean describes those reported checks and does not imply fabrication or complete manufacturing signoff. The AI workshop was a guided walkthrough using pre-built reference designs.
+The seven project cards are grounded in the [Projects source repository](https://github.com/Anikett20/Projects), including each project README, testbench, and the [upload audit](https://github.com/Anikett20/Projects/blob/main/verification/UPLOAD_AUDIT.md). The supplied CI passes directed simulation for all seven, with generic Yosys synthesis results for the MIPS16, MIPS32, FIFO, and matrix projects. These checks do not cover every instruction, input, or corner. Historical OpenLane and Synopsys reports are described as saved evidence; physical signoff is not claimed.
+
+The SoC figures were cross-checked against the author's phase-5 OpenLane metrics, post-route OpenSTA power/timing summaries, DRC/LVS reports, and engineering report. Power values are estimates. Saved extracted setup WNS spans −0.83 to −1.42 ns across corners, and antenna checks report 507 pin violations. Zero Magic DRC / Netgen LVS errors are scoped to those specific checks and do not imply complete manufacturing signoff. The AI workshop was a guided walkthrough using pre-built reference designs.
 
 The visual direction preserves the original dark vCard implementation. Illustrations for the earlier projects remain explanatory graphics; the SoC image is an actual layout capture.

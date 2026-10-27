@@ -93,34 +93,214 @@
   }));
 
   const projects = {
-    riscv: {
-      title: '32-Bit RISC-V Microcontroller SoC', subtitle: 'RV32IM + Zicsr · OpenLane 1.1.1 / SKY130 HD · October 2026', image: 'assets/project-riscv-layout.jpg',
-      imageCaption: 'ACTUAL GDSII LAYOUT IN KLAYOUT',
-      description: 'I developed rv32im_soc in Verilog across five architectural phases: a single-cycle RV32I core, a five-stage pipeline, RV32M arithmetic, an interrupt-driven SoC, and a final design with synchronous WFI sleep control and SPI. The final CPU integrates hazard/forwarding logic, a 32-cycle iterative multiply/divide unit, machine-mode CSRs and traps, UART, GPIO, timer, and a four-mode SPI master with TX/RX FIFOs.',
-      steps: ['Built and compared five architecture and implementation phases using OpenLane and the sky130_fd_sc_hd library.', 'Replaced a combinational gated-clock approach with synchronous core enables and a two-cycle writeback drain before WFI sleep.', 'Verified timer-interrupt wakeup, trap handling, and SPI loopback through Icarus Verilog testbenches and waveform analysis.', 'Completed synthesis, floorplanning, placement, CTS, routing, RC extraction, and DRC/LVS checks on a 1000 × 1000 µm die.', 'Compared phase-4 and phase-5 OpenSTA estimates: typical-corner switching power fell from 9.65 to 6.93 mW (28.2%) after sleep-control and physical-design changes.'],
-      metrics: [['21,584', 'Routed standard cells'], ['1 mm²', 'Die area'], ['28.2%', 'Lower estimated switching power']],
-      results: 'Phase-5 reports record zero Magic/KLayout DRC violations and zero Netgen LVS errors. Estimated typical-corner total power is about 18.23 mW at a 20 ns clock constraint. Typical setup slack is +9.63 ns; the slow corner retains −1.14 ns setup slack at that target. The results support a DRC/LVS-clean layout, with further timing work needed for 50 MHz across all corners.',
-      tools: 'Verilog · Icarus Verilog · OpenLane · Yosys · OpenROAD · OpenSTA · SKY130 · Magic · Netgen · KLayout',
-      source: 'https://www.linkedin.com/posts/aniket-kulkarni-2352a0322_rv32im-zicsr-microcontroller-soc-report-activity-7520454299001188352-KaMY',
-      sourceLabel: 'Read project post & engineering report'
-    },
-    openlane: {
-      title: '8-Bit Digital Design', subtitle: 'RTL to GDSII · OpenLane / SKY130 · April 2026', image: 'assets/project-openlane.svg',
-      description: 'I implemented an 8-operation ALU, an 8 × 8-bit synchronous register file, and a control unit supporting 12 instructions in Verilog, then took the design through the OpenLane RTL-to-GDSII flow on SKY130.',
-      steps: ['Developed the digital blocks in Verilog HDL.', 'Verified RTL behavior using Icarus Verilog testbenches.', 'Ran the OpenLane implementation flow on the SKY130 130 nm process.', 'Inspected the final GDSII layout using KLayout.'],
-      metrics: [['8', 'ALU operations'], ['8 × 8-bit', 'Synchronous register file'], ['12', 'Control-unit instructions']],
-      results: 'This project connected RTL design and testbench simulation with an OpenLane physical implementation and GDSII inspection in KLayout.',
-      tools: 'Verilog · Icarus Verilog · OpenLane · SKY130 · KLayout'
-    },
-    synopsys: {
-      title: '4-Bit ALU', subtitle: 'Synopsys RTL-to-GDSII flow · February 2026', image: 'assets/project-synopsys.svg',
-      description: 'I designed a modular 4-bit ALU in Verilog and worked through functional verification, synthesis, and physical implementation using the Synopsys tool flow.',
-      steps: ['Developed the modular ALU in Verilog.', 'Verified opcode-level functionality using VCS and Verdi.', 'Performed synthesis using Design Vision.', 'Completed physical design from floorplanning through routing using IC Compiler II.'],
-      metrics: [['4-bit', 'ALU datapath'], ['VCS / Verdi', 'Functional verification'], ['ICC2', 'Physical implementation']],
-      results: 'The project covered opcode-level functional checks, logic synthesis, and physical implementation from floorplanning through routing.',
-      tools: 'Verilog · VCS · Verdi · Design Compiler / Design Vision · IC Compiler II'
-    }
-  };
+  "riscv": {
+    "title": "32-Bit RISC-V Microcontroller SoC",
+    "subtitle": "RV32IM + Zicsr · OpenLane / SKY130 · October 2026",
+    "image": "assets/project-riscv-layout.jpg",
+    "imageCaption": "ACTUAL GDSII LAYOUT IN KLAYOUT",
+    "description": "A five-stage RV32IM + Zicsr processor with a 32-cycle iterative multiply/divide unit, machine-mode CSRs and traps, UART, GPIO, timer, SPI, and synchronous WFI sleep control. Built across five phases for architectural and physical-design comparison.",
+    "steps": [
+      "Implemented forwarding and hazard handling, machine-mode traps, and memory-mapped peripherals in Verilog.",
+      "Directed firmware simulation reached the expected completion marker at cycle 273 in the published test.",
+      "Saved phase-5 OpenLane reports record synthesis, placement, CTS, routing, RC extraction, and Magic DRC / Netgen LVS checks.",
+      "Compared phase-4 and phase-5 OpenSTA typical-corner switching estimates: 9.65 to 6.93 mW, a 28.2% reduction after sleep-control and physical-design changes."
+    ],
+    "metrics": [
+      [
+        "21,584",
+        "Routed standard cells"
+      ],
+      [
+        "1 mm²",
+        "Die area"
+      ],
+      [
+        "28.2%",
+        "Lower estimated switching power"
+      ]
+    ],
+    "results": "The saved phase-5 reports show zero Magic DRC and Netgen LVS errors. Extracted setup WNS spans −0.83 to −1.42 ns across saved corners, and antenna checks report 507 pin violations. These remain open implementation issues; this is not a timing-closed or fabrication-ready design.",
+    "tools": "Verilog · Icarus Verilog · OpenLane · Yosys · OpenROAD · OpenSTA · SKY130 · Magic · Netgen · KLayout",
+    "source": "https://github.com/Anikett20/Projects/tree/main/riscv-rv32im-soc",
+    "sourceLabel": "View source and verification notes",
+    "secondarySource": "https://www.linkedin.com/posts/aniket-kulkarni-2352a0322_rv32im-zicsr-microcontroller-soc-report-activity-7520454299001188352-KaMY",
+    "secondarySourceLabel": "Read project post"
+  },
+  "mips32": {
+    "title": "32-Bit Five-Stage MIPS-Subset Processor",
+    "subtitle": "Pipelined Verilog CPU · 2026",
+    "image": "assets/project-mips32.svg",
+    "description": "An educational five-stage MIPS-subset CPU with forwarding, load-use stalls, branch/jump flushes, and instruction and data memories.",
+    "steps": [
+      "Implemented pipeline stages and hazard-control logic in Verilog.",
+      "Ran directed simulation that checked six register values and one data-memory result.",
+      "Published source, testbench, generic synthesis result, and historical OpenLane reports."
+    ],
+    "metrics": [
+      [
+        "5",
+        "Pipeline stages"
+      ],
+      [
+        "6 + 1",
+        "Checked register + memory results"
+      ],
+      [
+        "Pass",
+        "Generic Yosys synthesis"
+      ]
+    ],
+    "results": "Historical OpenLane reports record zero Magic DRC and LVS errors, but extracted nominal setup WNS is −4.22 ns and antenna checks report 141 pin violations. These results do not establish timing closure or signoff.",
+    "tools": "Verilog · Icarus Verilog · Yosys · OpenLane · SKY130",
+    "source": "https://github.com/Anikett20/Projects/tree/main/mips32-pipeline",
+    "sourceLabel": "View source and verification notes"
+  },
+  "matrix": {
+    "title": "4 × 4 Fixed-Point Matrix Multiplier",
+    "subtitle": "Sign-magnitude Q7.8 datapath · 2026",
+    "image": "assets/project-matrix.svg",
+    "description": "A parallel 4 × 4 matrix-multiplication datapath using 16-bit sign-magnitude Q7.8 values, 64 multipliers, and 48 adders.",
+    "steps": [
+      "Constructed the multiplier and adder network in Verilog.",
+      "Checked all 16 output elements for one fixed input-matrix pair.",
+      "Published testbench, generic synthesis result, and historical physical-flow reports."
+    ],
+    "metrics": [
+      [
+        "4 × 4",
+        "Matrix dimensions"
+      ],
+      [
+        "64",
+        "Multipliers"
+      ],
+      [
+        "16",
+        "Outputs checked for one pair"
+      ]
+    ],
+    "results": "The directed check covers one matrix pair, so arbitrary inputs and overflow behavior remain unverified. Historical OpenLane reports show nominal setup WNS −0.86 ns and 43 antenna pin violations.",
+    "tools": "Verilog · Icarus Verilog · Yosys · OpenLane · SKY130",
+    "source": "https://github.com/Anikett20/Projects/tree/main/fixed-point-matrix-multiplication",
+    "sourceLabel": "View source and verification notes"
+  },
+  "fifo": {
+    "title": "16 × 32 Synchronous FIFO",
+    "subtitle": "Parameterized and structural implementations · 2026",
+    "image": "assets/project-fifo.svg",
+    "description": "Two single-clock FIFO implementations, one parameterized and one structural, with full, empty, threshold, and boundary behavior.",
+    "steps": [
+      "Implemented both FIFO architectures with 16 words of 32 bits and threshold 8 in the supplied configurations.",
+      "Ran eight directed suites covering data movement, reset, full/empty flags, and simultaneous read/write activity.",
+      "Published source, testbenches, generic synthesis result, and historical OpenLane reports."
+    ],
+    "metrics": [
+      [
+        "16 × 32",
+        "Words × bits"
+      ],
+      [
+        "8",
+        "Directed test suites"
+      ],
+      [
+        "Pass",
+        "Generic Yosys synthesis"
+      ]
+    ],
+    "results": "The project is a single-clock FIFO; it does not include asynchronous clock-domain crossing. Simultaneous-activity tests are directed rather than a full scoreboard. Historical antenna checks report five pin violations.",
+    "tools": "Verilog · Icarus Verilog · Yosys · OpenLane · SKY130",
+    "source": "https://github.com/Anikett20/Projects/tree/main/fifo-memory",
+    "sourceLabel": "View source and verification notes"
+  },
+  "mips16": {
+    "title": "16-Bit MIPS-Style Processor",
+    "subtitle": "Custom single-cycle ISA · 2026",
+    "image": "assets/project-mips16.svg",
+    "description": "A compact single-cycle CPU with a custom MIPS-style 16-bit instruction set, eight registers, a 32-word instruction ROM, and a 16-word data memory.",
+    "steps": [
+      "Developed the datapath, decode, and on-chip memories in Verilog.",
+      "Ran directed checks for seven register values, one data-memory result, and halt-loop PC behavior.",
+      "Published source, testbench, generic synthesis result, and historical OpenLane reports."
+    ],
+    "metrics": [
+      [
+        "16-bit",
+        "Custom instruction set"
+      ],
+      [
+        "8",
+        "General registers"
+      ],
+      [
+        "Pass",
+        "Generic Yosys synthesis"
+      ]
+    ],
+    "results": "The ISA is educational and is not binary compatible with standard MIPS. Historical OpenLane reports record zero Magic DRC and LVS errors, but nominal extracted WNS is −1.26 ns and antenna checks report 16 pin violations.",
+    "tools": "Verilog · Icarus Verilog · Yosys · OpenLane · SKY130",
+    "source": "https://github.com/Anikett20/Projects/tree/main/mips16",
+    "sourceLabel": "View source and verification notes"
+  },
+  "alu8": {
+    "title": "8-Bit ALU and Register Datapath",
+    "subtitle": "External-instruction RTL · 2026",
+    "image": "assets/project-openlane.svg",
+    "description": "An educational 8-bit ALU with an 8 × 8-bit register file and decoder. Instructions are externally supplied; this block has no PC, fetch unit, or program memory.",
+    "steps": [
+      "Implemented ALU, register file, and decode logic in Verilog.",
+      "Ran eleven directed ALU vectors and an eight-instruction integration example.",
+      "Published source and testbenches for reproducible RTL simulation."
+    ],
+    "metrics": [
+      [
+        "8-bit",
+        "ALU datapath"
+      ],
+      [
+        "8 × 8-bit",
+        "Register file"
+      ],
+      [
+        "11",
+        "Directed ALU vectors"
+      ]
+    ],
+    "results": "The repository supports RTL-level directed simulation for this exact design. It does not contain evidence of a completed OpenLane physical flow or GDSII for this datapath.",
+    "tools": "Verilog · Icarus Verilog",
+    "source": "https://github.com/Anikett20/Projects/tree/main/alu-8bit-datapath",
+    "sourceLabel": "View source and testbench"
+  },
+  "alu4": {
+    "title": "4-Bit Registered ALU",
+    "subtitle": "Verilog RTL and saved Synopsys reports · 2026",
+    "image": "assets/project-synopsys.svg",
+    "description": "An eight-operation registered 4-bit ALU with source, directed simulation, and saved Design Compiler and IC Compiler II reports.",
+    "steps": [
+      "Developed the modular ALU in Verilog and simulated nine directed scenarios.",
+      "Saved Design Compiler synthesis and setup reports.",
+      "Reviewed IC Compiler II physical-flow reports for remaining DRC and parasitic issues."
+    ],
+    "metrics": [
+      [
+        "8",
+        "Defined operations"
+      ],
+      [
+        "9",
+        "Directed scenarios"
+      ],
+      [
+        "213",
+        "Saved DC cell count"
+      ]
+    ],
+    "results": "The supplied scenarios cover seven of eight opcodes; SHR is untested. Saved DC setup slack is −0.06 ns versus a 1.2 ns clock. ICC II reports 178 DRC errors and missing parasitics; the saved reports do not establish signoff or a verified final routed design.",
+    "tools": "Verilog · VCS / Verdi · Design Compiler · IC Compiler II",
+    "source": "https://github.com/Anikett20/Projects/tree/main/alu-4bit",
+    "sourceLabel": "View source and saved reports"
+  }
+};
 
   function openProject(key, trigger) {
     const project = projects[key];
@@ -136,6 +316,7 @@
       <h3>Implementation notes</h3><p class="results-note">${project.results}</p>
       <h3>Tools used</h3><p>${project.tools}</p>
       ${project.source ? `<a class="text-link accent-link" href="${project.source}" target="_blank" rel="noopener noreferrer">${project.sourceLabel}<svg class="icon"><use href="#i-external"/></svg></a>` : ''}
+      ${project.secondarySource ? `<a class="text-link accent-link dialog-secondary-link" href="${project.secondarySource}" target="_blank" rel="noopener noreferrer">${project.secondarySourceLabel}<svg class="icon"><use href="#i-external"/></svg></a>` : ''}
       </div>`;
     dialog.showModal();
     dialog.scrollTop = 0;

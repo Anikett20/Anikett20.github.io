@@ -13,3 +13,6 @@
 .dialog-banner-layout>span{background:#191918de;padding:5px 8px;color:#f1ece3}
 @media(max-width:900px){.project-card-featured .project-open{grid-template-columns:1fr;gap:0}.project-card-featured .project-title-row{margin-top:23px}.dialog-banner-layout{height:260px}}
 @media(max-width:700px){.learning-list .text-link{font-size:10px}.dialog-banner-layout{height:210px}}
+
+.dialog-secondary-link{margin-left:22px}
+@media(max-width:700px){.dialog-secondary-link{margin-left:0;display:flex;width:fit-content}.project-filters{gap:15px}.project-filters button{font-size:10px}}
