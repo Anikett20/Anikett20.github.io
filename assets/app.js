@@ -138,6 +138,7 @@
     "imageCaption": "SYNTHESIZED FORWARDING LOGIC · OPEN FULL IMAGE",
     "imageAlt": "Synthesized forwarding-unit logic for the five-stage MIPS-subset processor",
     "evidence": [
+      {"src": "assets/evidence/mips32-gds.png", "title": "GDSII routing view", "caption": "KLayout routing-layer view rendered from the archived MIPSpipeline.gds.", "alt": "Routing-layer view of the 32-bit five-stage MIPS-subset processor"},
       {"src": "assets/evidence/mips32-gtkwave.png", "title": "GTKWave simulation", "caption": "Directed processor test showing PC, writeback, and memory signals.", "alt": "GTKWave screenshot of the 32-bit MIPS-subset processor directed simulation"}
     ],
     "description": "An educational five-stage MIPS-subset CPU with forwarding, load-use stalls, branch/jump flushes, and instruction and data memories.",
@@ -172,6 +173,7 @@
     "imageCaption": "DIRECTED RTL VERIFICATION CHART · OPEN FULL IMAGE",
     "imageAlt": "Verification chart for one 4 by 4 fixed-point matrix input pair",
     "evidence": [
+      {"src": "assets/evidence/matrix-gds.png", "title": "GDSII routing view", "caption": "KLayout routing-layer view rendered from the archived matrix_multiplication.gds.", "alt": "Routing-layer view of the 4 by 4 fixed-point matrix multiplier"},
       {"src": "assets/evidence/matrix-synthesis.png", "title": "Synthesis schematic", "caption": "Saved network view of the fixed-point matrix-multiplication datapath.", "alt": "Synthesis schematic of the 4 by 4 matrix multiplier"}
     ],
     "description": "A parallel 4 × 4 matrix-multiplication datapath using 16-bit sign-magnitude Q7.8 values, 64 multipliers, and 48 adders.",
@@ -206,6 +208,7 @@
     "imageCaption": "STRUCTURAL FIFO SCHEMATIC · OPEN FULL IMAGE",
     "imageAlt": "Top-level schematic of the 16 by 32 single-clock FIFO",
     "evidence": [
+      {"src": "assets/evidence/fifo-gds.png", "title": "GDSII routing view", "caption": "KLayout routing-layer view rendered from the archived fifo_memory.gds.", "alt": "Routing-layer view of the 16 by 32 synchronous FIFO"},
       {"src": "assets/evidence/fifo-status-synthesis.png", "title": "Status logic after synthesis", "caption": "Saved gate view of full, empty, and threshold control logic.", "alt": "Synthesized FIFO status-flag logic schematic"}
     ],
     "description": "Two single-clock FIFO implementations, one parameterized and one structural, with full, empty, threshold, and boundary behavior.",
@@ -240,6 +243,7 @@
     "imageCaption": "SYNTHESIZED CONTROL LOGIC · OPEN FULL IMAGE",
     "imageAlt": "Synthesized control-unit logic for the 16-bit MIPS-style CPU",
     "evidence": [
+      {"src": "assets/evidence/mips16-gds.png", "title": "GDSII routing view", "caption": "KLayout routing-layer view rendered from the archived mips16.gds.", "alt": "Routing-layer view of the 16-bit MIPS-style processor"},
       {"src": "assets/evidence/mips16-gtkwave.png", "title": "GTKWave simulation", "caption": "Directed processor test showing instructions, PC, register writes, and ALU results.", "alt": "GTKWave screenshot of the 16-bit MIPS-style CPU directed simulation"}
     ],
     "description": "A compact single-cycle CPU with a custom MIPS-style 16-bit instruction set, eight registers, a 32-word instruction ROM, and a 16-word data memory.",

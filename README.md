@@ -10,7 +10,7 @@ A responsive, static personal portfolio for VLSI Design & Technology, built with
 - `assets/Aniket_Kulkarni_Resume.pdf` — the updated one-page resume, including seven documented Verilog projects, the SemiX AI hardware workshop, and 4th Annual SemiX Summit. The Resume section contains one Download resume (PDF) action.
 - `assets/updates.css` — styles for the featured SoC card, evidence galleries, project links, and workshop source links.
 - `assets/project-riscv-layout.jpg` — actual phase-5 GDSII layout shown in KLayout, from the author's project documentation.
-- `assets/evidence/` — unaltered captures from the author's `Projects` and `RISC V` folders: synthesis schematics, GTKWave screens, and verification charts. Each project dialog links to its full-size image.
+- `assets/evidence/` — captures from the author's `Projects` and `RISC V` folders, plus layout images rendered from the supplied archived GDS files: GDSII layouts, synthesis schematics, GTKWave screens, and verification charts. Each project dialog links to its full-size image.
 - `assets/circuit-hero.svg`, `assets/project-*.svg`, and `assets/favicon.svg` — original decorative and schematic artwork. The 8-bit and 4-bit ALU cards retain explanatory illustrations because the supplied folders did not contain matching captures.
 
 ## Preview locally
@@ -55,6 +55,15 @@ The SoC figures were cross-checked against the author's phase-5 OpenLane metrics
 
 The RISC-V card shows the actual phase-5 KLayout GDSII screenshot. Its dialog also shows the supplied SoC synthesis schematic and a chart derived from the phase-5 RTL testbench VCD. The MIPS16 and MIPS32 cards show saved synthesized logic; their dialogs include GTKWave screenshots from the directed simulations. The FIFO card shows the structural top-level schematic and a saved status-logic gate view. The matrix card shows the supplied one-pair RTL verification chart and a saved synthesis-network view. These images are exact copies of files in the author's local `Projects` and `RISC V` folders, without visual alteration.
 
-The other four project folders contain raw `.gds` files but no ready-to-publish GDS screenshot. A raw GDS file is not a browser image, so the portfolio does not present it as one. The verification charts and synthesized schematics are labeled by their actual source and do not imply timing closure or physical signoff.
+The MIPS16, MIPS32, FIFO, and matrix project dialogs also include four 1600 × 1200 PNGs rendered from their archived GDS files with KLayout 0.30.8. These routing views show LI1 and MET1–MET5 drawing geometry with text labels hidden, using the [SKY130 layer mapping](https://skywater-pdk.readthedocs.io/en/main/rules/layers.html). The existing waveform, verification, and synthesis captures remain unaltered. Source paths below are relative to the author's local `Projects` folder.
+
+| Project | Rendered image | Archived GDS source |
+| --- | --- | --- |
+| 16-bit MIPS-style processor | `assets/evidence/mips16-gds.png` | `16-bit MIPS/gds/mips16.gds` |
+| 32-bit MIPS-subset processor | `assets/evidence/mips32-gds.png` | `32-bit MIPS/gds/MIPSpipeline.gds` |
+| Synchronous FIFO | `assets/evidence/fifo-gds.png` | `FIFO Memory/gds/gds/fifo_memory.gds` |
+| Fixed-point matrix multiplier | `assets/evidence/matrix-gds.png` | `Fixed point matrix multiplication/gds/matrix_multiplication.gds` |
+
+The layout images show the archived geometry and do not establish timing closure or physical signoff. The project dialogs retain the documented timing, antenna, and verification limitations alongside the images.
 
 The visual direction preserves the original dark vCard implementation. The SoC layout is a real screenshot; the ALU card illustrations remain explanatory graphics.
