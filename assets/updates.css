@@ -16,3 +16,25 @@
 
 .dialog-secondary-link{margin-left:22px}
 @media(max-width:700px){.dialog-secondary-link{margin-left:0;display:flex;width:fit-content}.project-filters{gap:15px}.project-filters button{font-size:10px}}
+
+/* Original captures from the owner's project folders. Keep their full frames available in the dialog. */
+.project-evidence-image{background:#efede8;border-color:#77695b}
+.project-evidence-image img{object-fit:contain;background:#f5f5f3}
+.project-evidence-image:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#171717bb,transparent 22%,transparent 77%,#171717bb);pointer-events:none}
+.project-evidence-image .project-index,.project-evidence-image .project-image-caption,.project-evidence-image .project-view{z-index:1;color:#fff}
+.dialog-banner{display:block}
+.dialog-banner-evidence{background:#f3f3f0;cursor:zoom-in}
+.dialog-banner-evidence img{object-fit:contain;opacity:1}
+.dialog-banner-evidence>span{background:#191918df;padding:5px 8px;color:#f1ece3}
+.dialog-banner-layout.dialog-banner-evidence{background:#191918}
+.evidence-section{margin:29px 0 10px;padding-top:7px;border-top:1px solid #565049}
+.evidence-section h3{margin:18px 0 15px}
+.evidence-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:16px}
+.evidence-grid figure{margin:0;border:1px solid #565049;background:#24221f}
+.evidence-grid figure>a{display:block;position:relative;background:#f5f5f3}
+.evidence-grid img{display:block;width:100%;aspect-ratio:1.75;object-fit:contain}
+.evidence-grid figure>a>span{position:absolute;right:9px;bottom:9px;background:#191918ed;color:#f1ece3;font:8px var(--mono);letter-spacing:.5px;padding:6px 8px}
+.evidence-grid figcaption{padding:12px 14px 14px}
+.evidence-grid figcaption strong{display:block;color:#ebe7e1;font-size:12px;font-weight:600;margin-bottom:4px}
+.evidence-grid figcaption span{display:block;color:#bcb5ac;font-size:11px;line-height:1.6}
+@media(max-width:700px){.dialog-banner-evidence{height:190px}.evidence-grid{grid-template-columns:1fr}.evidence-grid img{aspect-ratio:1.6}}

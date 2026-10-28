@@ -8,9 +8,10 @@ A responsive, static personal portfolio for VLSI Design & Technology, built with
 - `assets/style.css` — desktop/mobile layout, visual styling, and reduced-motion support.
 - `assets/app.js` — hash navigation, project filters and dialogs, mobile navigation, motion control, and email copying.
 - `assets/Aniket_Kulkarni_Resume.pdf` — the updated one-page resume, including seven documented Verilog projects, the SemiX AI hardware workshop, and 4th Annual SemiX Summit. The Resume section contains one Download resume (PDF) action.
-- `assets/updates.css` — styles for the featured SoC card, project links, and workshop source links.
+- `assets/updates.css` — styles for the featured SoC card, evidence galleries, project links, and workshop source links.
 - `assets/project-riscv-layout.jpg` — actual phase-5 GDSII layout shown in KLayout, from the author's project documentation.
-- `assets/circuit-hero.svg`, `assets/project-*.svg`, and `assets/favicon.svg` — original decorative and schematic artwork. Project illustrations are explanatory graphics, not physical-design screenshots.
+- `assets/evidence/` — unaltered captures from the author's `Projects` and `RISC V` folders: synthesis schematics, GTKWave screens, and verification charts. Each project dialog links to its full-size image.
+- `assets/circuit-hero.svg`, `assets/project-*.svg`, and `assets/favicon.svg` — original decorative and schematic artwork. The 8-bit and 4-bit ALU cards retain explanatory illustrations because the supplied folders did not contain matching captures.
 
 ## Preview locally
 
@@ -50,4 +51,10 @@ The seven project cards are grounded in the [Projects source repository](https:/
 
 The SoC figures were cross-checked against the author's phase-5 OpenLane metrics, post-route OpenSTA power/timing summaries, DRC/LVS reports, and engineering report. Power values are estimates. Saved extracted setup WNS spans −0.83 to −1.42 ns across corners, and antenna checks report 507 pin violations. Zero Magic DRC / Netgen LVS errors are scoped to those specific checks and do not imply complete manufacturing signoff. The AI workshop was a guided walkthrough using pre-built reference designs.
 
-The visual direction preserves the original dark vCard implementation. Illustrations for the earlier projects remain explanatory graphics; the SoC image is an actual layout capture.
+## Image provenance
+
+The RISC-V card shows the actual phase-5 KLayout GDSII screenshot. Its dialog also shows the supplied SoC synthesis schematic and a chart derived from the phase-5 RTL testbench VCD. The MIPS16 and MIPS32 cards show saved synthesized logic; their dialogs include GTKWave screenshots from the directed simulations. The FIFO card shows the structural top-level schematic and a saved status-logic gate view. The matrix card shows the supplied one-pair RTL verification chart and a saved synthesis-network view. These images are exact copies of files in the author's local `Projects` and `RISC V` folders, without visual alteration.
+
+The other four project folders contain raw `.gds` files but no ready-to-publish GDS screenshot. A raw GDS file is not a browser image, so the portfolio does not present it as one. The verification charts and synthesized schematics are labeled by their actual source and do not imply timing closure or physical signoff.
+
+The visual direction preserves the original dark vCard implementation. The SoC layout is a real screenshot; the ALU card illustrations remain explanatory graphics.

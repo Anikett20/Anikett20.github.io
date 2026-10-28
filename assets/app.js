@@ -98,6 +98,11 @@
     "subtitle": "RV32IM + Zicsr · OpenLane / SKY130 · October 2026",
     "image": "assets/project-riscv-layout.jpg",
     "imageCaption": "ACTUAL GDSII LAYOUT IN KLAYOUT",
+    "imageAlt": "KLayout screenshot of the routed phase-5 RV32IM SoC GDSII layout",
+    "evidence": [
+      {"src": "assets/evidence/riscv-verification-timeline.png", "title": "RTL verification timeline", "caption": "WFI sleep, timer interrupt, and SPI loopback, plotted from the phase-5 testbench VCD.", "alt": "Annotated phase-5 simulation timeline for WFI sleep, timer interrupt, and SPI loopback"},
+      {"src": "assets/evidence/riscv-synthesis.png", "title": "Synthesized SoC schematic", "caption": "Saved schematic view of the CPU, sleep controller, and memory-mapped peripherals.", "alt": "Synthesis schematic of the RV32IM SoC and its peripherals"}
+    ],
     "description": "A five-stage RV32IM + Zicsr processor with a 32-cycle iterative multiply/divide unit, machine-mode CSRs and traps, UART, GPIO, timer, SPI, and synchronous WFI sleep control. Built across five phases for architectural and physical-design comparison.",
     "steps": [
       "Implemented forwarding and hazard handling, machine-mode traps, and memory-mapped peripherals in Verilog.",
@@ -129,7 +134,12 @@
   "mips32": {
     "title": "32-Bit Five-Stage MIPS-Subset Processor",
     "subtitle": "Pipelined Verilog CPU · 2026",
-    "image": "assets/project-mips32.svg",
+    "image": "assets/evidence/mips32-forwarding-synthesis.png",
+    "imageCaption": "SYNTHESIZED FORWARDING LOGIC · OPEN FULL IMAGE",
+    "imageAlt": "Synthesized forwarding-unit logic for the five-stage MIPS-subset processor",
+    "evidence": [
+      {"src": "assets/evidence/mips32-gtkwave.png", "title": "GTKWave simulation", "caption": "Directed processor test showing PC, writeback, and memory signals.", "alt": "GTKWave screenshot of the 32-bit MIPS-subset processor directed simulation"}
+    ],
     "description": "An educational five-stage MIPS-subset CPU with forwarding, load-use stalls, branch/jump flushes, and instruction and data memories.",
     "steps": [
       "Implemented pipeline stages and hazard-control logic in Verilog.",
@@ -158,7 +168,12 @@
   "matrix": {
     "title": "4 × 4 Fixed-Point Matrix Multiplier",
     "subtitle": "Sign-magnitude Q7.8 datapath · 2026",
-    "image": "assets/project-matrix.svg",
+    "image": "assets/evidence/matrix-verification.png",
+    "imageCaption": "DIRECTED RTL VERIFICATION CHART · OPEN FULL IMAGE",
+    "imageAlt": "Verification chart for one 4 by 4 fixed-point matrix input pair",
+    "evidence": [
+      {"src": "assets/evidence/matrix-synthesis.png", "title": "Synthesis schematic", "caption": "Saved network view of the fixed-point matrix-multiplication datapath.", "alt": "Synthesis schematic of the 4 by 4 matrix multiplier"}
+    ],
     "description": "A parallel 4 × 4 matrix-multiplication datapath using 16-bit sign-magnitude Q7.8 values, 64 multipliers, and 48 adders.",
     "steps": [
       "Constructed the multiplier and adder network in Verilog.",
@@ -187,7 +202,12 @@
   "fifo": {
     "title": "16 × 32 Synchronous FIFO",
     "subtitle": "Parameterized and structural implementations · 2026",
-    "image": "assets/project-fifo.svg",
+    "image": "assets/evidence/fifo-top-schematic.png",
+    "imageCaption": "STRUCTURAL FIFO SCHEMATIC · OPEN FULL IMAGE",
+    "imageAlt": "Top-level schematic of the 16 by 32 single-clock FIFO",
+    "evidence": [
+      {"src": "assets/evidence/fifo-status-synthesis.png", "title": "Status logic after synthesis", "caption": "Saved gate view of full, empty, and threshold control logic.", "alt": "Synthesized FIFO status-flag logic schematic"}
+    ],
     "description": "Two single-clock FIFO implementations, one parameterized and one structural, with full, empty, threshold, and boundary behavior.",
     "steps": [
       "Implemented both FIFO architectures with 16 words of 32 bits and threshold 8 in the supplied configurations.",
@@ -216,7 +236,12 @@
   "mips16": {
     "title": "16-Bit MIPS-Style Processor",
     "subtitle": "Custom single-cycle ISA · 2026",
-    "image": "assets/project-mips16.svg",
+    "image": "assets/evidence/mips16-control-synthesis.png",
+    "imageCaption": "SYNTHESIZED CONTROL LOGIC · OPEN FULL IMAGE",
+    "imageAlt": "Synthesized control-unit logic for the 16-bit MIPS-style CPU",
+    "evidence": [
+      {"src": "assets/evidence/mips16-gtkwave.png", "title": "GTKWave simulation", "caption": "Directed processor test showing instructions, PC, register writes, and ALU results.", "alt": "GTKWave screenshot of the 16-bit MIPS-style CPU directed simulation"}
+    ],
     "description": "A compact single-cycle CPU with a custom MIPS-style 16-bit instruction set, eight registers, a 32-word instruction ROM, and a 16-word data memory.",
     "steps": [
       "Developed the datapath, decode, and on-chip memories in Verilog.",
@@ -308,9 +333,11 @@
     dialogTrigger = trigger;
     // All content is local, authored portfolio data; no external HTML is inserted.
     dialog.querySelector('.dialog-content').innerHTML = `
-      <div class="dialog-banner ${key === 'riscv' ? 'dialog-banner-layout' : ''}"><img src="${project.image}" alt="${key === 'riscv' ? 'Routed rv32im_soc GDSII layout in KLayout' : ''}"><span>${project.imageCaption || 'ORIGINAL SCHEMATIC ILLUSTRATION'}</span></div>
+      <a class="dialog-banner ${key === 'riscv' ? 'dialog-banner-layout' : ''} ${project.evidence ? 'dialog-banner-evidence' : ''}" href="${project.image}" target="_blank" rel="noopener noreferrer" aria-label="Open full-size image: ${project.title}"><img src="${project.image}" alt="${project.imageAlt || 'Project illustration'}"><span>${project.imageCaption || 'ORIGINAL SCHEMATIC ILLUSTRATION'}</span></a>
       <div class="dialog-body"><h2 id="project-dialog-title">${project.title}</h2><p class="dialog-subtitle">${project.subtitle}</p>
-      <p>${project.description}</p><h3>The process</h3><ul>${project.steps.map(step => `<li>${step}</li>`).join('')}</ul>
+      <p>${project.description}</p>
+      ${project.evidence?.length ? `<section class="evidence-section" aria-label="More project images"><h3>More from this project</h3><div class="evidence-grid">${project.evidence.map(item => `<figure><a href="${item.src}" target="_blank" rel="noopener noreferrer" aria-label="Open full-size ${item.title}"><img src="${item.src}" alt="${item.alt}" loading="lazy"><span>OPEN FULL IMAGE ↗</span></a><figcaption><strong>${item.title}</strong><span>${item.caption}</span></figcaption></figure>`).join('')}</div></section>` : ''}
+      <h3>The process</h3><ul>${project.steps.map(step => `<li>${step}</li>`).join('')}</ul>
       <p class="results-label">DESIGN AT A GLANCE</p>
       <div class="dialog-stats">${project.metrics.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
       <h3>Implementation notes</h3><p class="results-note">${project.results}</p>
