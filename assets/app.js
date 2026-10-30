@@ -7,12 +7,9 @@
   const overlay = document.querySelector('.menu-overlay');
   const sidebar = document.querySelector('.sidebar');
   const mobile = window.matchMedia('(max-width: 700px)');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const motionButton = document.querySelector('.motion-toggle');
   const dialog = document.querySelector('.project-dialog');
   let currentPage = '';
   let dialogTrigger = null;
-  let motionPaused = reducedMotion.matches;
 
   const aliases = { projects: 'portfolio', experience: 'resume', education: 'resume', certifications: 'resume', leadership: 'resume', skills: 'about' };
   const titles = { home: 'Aniket Kulkarni | VLSI Design & Technology', about: 'About | Aniket Kulkarni', resume: 'Resume | Aniket Kulkarni', portfolio: 'Projects | Aniket Kulkarni', contact: 'Contact | Aniket Kulkarni' };
@@ -70,17 +67,6 @@
   }));
   mobile.addEventListener('change', () => setMenu(false));
   window.addEventListener('hashchange', () => showPage());
-
-  function updateMotion() {
-    const paused = motionPaused || reducedMotion.matches;
-    document.body.classList.toggle('motion-paused', paused);
-    motionButton.setAttribute('aria-pressed', String(paused));
-    motionButton.querySelector('.motion-label').textContent = reducedMotion.matches ? 'Reduced motion' : paused ? 'Resume motion' : 'Pause motion';
-    motionButton.disabled = reducedMotion.matches;
-    motionButton.setAttribute('aria-label', reducedMotion.matches ? 'Motion disabled by your system preference' : paused ? 'Resume decorative motion' : 'Pause decorative motion');
-  }
-  motionButton.addEventListener('click', () => { motionPaused = !motionPaused; updateMotion(); });
-  reducedMotion.addEventListener('change', updateMotion);
 
   const filterButtons = [...document.querySelectorAll('[data-filter]')];
   const cards = [...document.querySelectorAll('[data-category]')];
@@ -341,8 +327,8 @@
       <div class="dialog-body"><h2 id="project-dialog-title">${project.title}</h2><p class="dialog-subtitle">${project.subtitle}</p>
       <p>${project.description}</p>
       ${project.evidence?.length ? `<section class="evidence-section" aria-label="More project images"><h3>More from this project</h3><div class="evidence-grid">${project.evidence.map(item => `<figure><a href="${item.src}" target="_blank" rel="noopener noreferrer" aria-label="Open full-size ${item.title}"><img src="${item.src}" alt="${item.alt}" loading="lazy"><span>OPEN FULL IMAGE ↗</span></a><figcaption><strong>${item.title}</strong><span>${item.caption}</span></figcaption></figure>`).join('')}</div></section>` : ''}
-      <h3>The process</h3><ul>${project.steps.map(step => `<li>${step}</li>`).join('')}</ul>
-      <p class="results-label">DESIGN AT A GLANCE</p>
+      <h3>Project work</h3><ul>${project.steps.map(step => `<li>${step}</li>`).join('')}</ul>
+      <p class="results-label">PROJECT DETAILS</p>
       <div class="dialog-stats">${project.metrics.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
       <h3>Implementation notes</h3><p class="results-note">${project.results}</p>
       <h3>Tools used</h3><p>${project.tools}</p>
@@ -373,6 +359,5 @@
       selection.addRange(range);
     }
   });
-  updateMotion();
   showPage(false);
 })();

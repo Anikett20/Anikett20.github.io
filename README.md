@@ -6,7 +6,7 @@ A responsive, static personal portfolio for VLSI Design & Technology, built with
 
 - `index.html` — profile, experience, education, training, project summaries, and contact links.
 - `assets/style.css` — desktop/mobile layout, visual styling, and reduced-motion support.
-- `assets/app.js` — hash navigation, project filters and dialogs, mobile navigation, motion control, and email copying.
+- `assets/app.js` — hash navigation, project filters and dialogs, mobile navigation, and email copying.
 - `assets/Aniket_Kulkarni_Resume.pdf` — the updated one-page resume, including seven documented Verilog projects, the SemiX AI hardware workshop, and 4th Annual SemiX Summit. The Resume section contains one Download resume (PDF) action.
 - `assets/updates.css` — styles for the featured SoC card, evidence galleries, project links, and workshop source links.
 - `assets/project-riscv-layout.jpg` — actual phase-5 GDSII layout shown in KLayout, from the author's project documentation.
@@ -37,7 +37,7 @@ Navigation supports `#home`, `#about`, `#resume`, `#portfolio`, and `#contact`. 
 
 ## Accessibility
 
-The site includes visible keyboard focus, a skip link, meaningful navigation labels, native modal dialogs with Escape-to-close and focus restoration, a mobile-menu focus loop, an announcement after project filtering, a pause-motion control, and support for the system's reduced-motion preference. With JavaScript disabled, all main sections and the resume download remain available.
+The site includes visible keyboard focus, a skip link, meaningful navigation labels, native modal dialogs with Escape-to-close and focus restoration, a mobile-menu focus loop, an announcement after project filtering, and support for the system's reduced-motion preference. The hero illustration is static. With JavaScript disabled, all main sections and the resume download remain available.
 
 ## Content source
 
